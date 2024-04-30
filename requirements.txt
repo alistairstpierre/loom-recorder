@@ -1,0 +1,4 @@
+selenium
+simpleobsws
+pygame
+numpy

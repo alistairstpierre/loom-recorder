@@ -50,8 +50,9 @@ Download and install Firefox [here](https://www.mozilla.org/en-US/firefox/)
     4. Unzip the zip file of the project you downloaded from Github.
     5. Go to the menu and click 'File' then 'Open Folder'
     6. Open the folder you just unzipped.
+    7. Create two new folders called 'data' and 'output' within the project.
     7. Drag your audio file into the 'data' folder and rename the file 'audio' exactly.
-    8. Drag your csv file into the 'data' folder and rename it 'data' exactly.
+    8. Drag your csv file into the 'data' folder and rename it 'data' exactly. Your project should look like the image below.
     9. In Visual Studio Code click on the 'main.py' file.
 
 ![Screenshot](https://i.imgur.com/CFkVq44.png)
@@ -67,4 +68,5 @@ Download and install Firefox [here](https://www.mozilla.org/en-US/firefox/)
 
 ## Run The Code
     1. Go to the menu and click 'Terminal' then 'New Terminal'
+    2. Type 'pip install -r requirements.txt'
     2. In the terminal type 'python main.py'
