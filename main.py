@@ -15,7 +15,7 @@ from datetime import datetime
 # A tuple of video file extensions to look for
 file_names = []
 pygame.mixer.init()
-sound = pygame.mixer.Sound('audio.mp3')
+sound = pygame.mixer.Sound('data/audio.mp3')
 start = 0  # Start of the range (in radians)
 end = 2 * math.pi  # End of the range (in radians)
 num_points = 1000  # How many points to generate
@@ -35,7 +35,7 @@ def remove_newlines(input_string):
     return output_string
 
 async def read_data():
-    with open('data.csv', newline='', encoding='utf-8') as csvfile:
+    with open('data/data.csv', newline='', encoding='utf-8') as csvfile:
         # Create a CSV reader object
         csvreader = csv.DictReader(csvfile)
 
@@ -49,8 +49,8 @@ async def read_data():
 async def main(website, file_name):
     browser = webdriver.Firefox()
 
-    url = 'ws://192.168.1.38:4455'
-    password = 'pSxSBIABtXtZoBdX'
+    url = 'ws://192.168.1.26:4455'
+    password = 'XXXXXXXXXXXXXX'
 
     parameters = simpleobsws.IdentificationParameters()
 
@@ -99,7 +99,7 @@ async def main(website, file_name):
 def rename_last_modified_file(folder_path, new_name):
     # Get the list of files in the folder
     files = [os.path.join(folder_path, f) for f in os.listdir(folder_path)]
-    # Filter out directories, leaving only files
+    # Filter out directories, leaving only files`
     files = [f for f in files if os.path.isfile(f)]
     # Find the most recently modified file
     last_modified_file = max(files, key=os.path.getmtime, default=None)
