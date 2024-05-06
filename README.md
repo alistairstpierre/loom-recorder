@@ -81,3 +81,8 @@ Download and install Firefox [here](https://www.mozilla.org/en-US/firefox/)
     1. Go to the menu and click 'Terminal' then 'New Terminal'
     2. Type 'pip install -r requirements.txt'
     2. In the terminal type 'python main.py'
+
+## Make Sure The Video Is Correctly Outputting
+    1. Once one video has finished recording stop the code by clicking the terminal and using the hotkey "Control+C" (You may need to spam it)
+    2. Right click the video in your output folder or find it in your files and play it back to check its recording correctly.
+    3. If its not recording correctly you may need to change some settings on OBS some common ones include, adding an audio source, muting your microphone, and resizing the display window within OBS.
