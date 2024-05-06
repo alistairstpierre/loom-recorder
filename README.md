@@ -67,6 +67,16 @@ Download and install Firefox [here](https://www.mozilla.org/en-US/firefox/)
     13. Update the url code so it looks like the following: url = 'ws://(Server IP):(Server Port)' as an example it should look something lke this: url = 'ws://198.162.1.26:4455'
     14. Update the password code so it looks like the following: password = '(Server Password)'
 
+## Set The OBS Output To Your Output Folder And Change The Settings
+    1. Open OBS
+    2. Click Settings on the "Controls" panel, bottom right of the interface.
+    3. Click Output
+    4. Go to the recording section and change the recording path to the output folder we created in Visual Studio.
+    5. Change the Recording Quality to "High Quality, Medium File Size"
+    6. Change the Recording Format to "MPEG-4(.mp4)"
+
+![Screenshot](https://i.imgur.com/rKu978Z.png)
+    
 ## Run The Code
     1. Go to the menu and click 'Terminal' then 'New Terminal'
     2. Type 'pip install -r requirements.txt'
