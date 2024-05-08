@@ -6,10 +6,9 @@ Press play and walk away 'loom style' video recorder.
 Record as many 'loom style' videos as you like. You will need:
 
     1. An audio recording.
-    2. Your 'loom style' profile picture.
+    2. Your 'loom style' profile picture OR 'loom style' profile video.
     3. A list of websites and business owners names
      (Or any unique name that you'd like to associate to the video.)
-
 
 ## Downloads & Installs
 
@@ -23,12 +22,11 @@ Download the zip file of code above. (Or use GIT if you are also a wizard.)
 
 Download and install Firefox [here](https://www.mozilla.org/en-US/firefox/)
 
-
-
 ## CSV File Setup
     1. Create a spreadsheet with at least two columns. These columns must be called 'Website' and 'Full Name' exactly, the capital letters matter.
     2. Add your websites to the 'Website' column and associated names to the 'Full Name' column.
     3. Export this data as a csv file.
+
 ## OBS Setup
     1. Open OBS
     2. Go to the menu, click 'Tools' then 'Scripts' which will open this window.
@@ -77,10 +75,28 @@ Download and install Firefox [here](https://www.mozilla.org/en-US/firefox/)
 
 ![Screenshot](https://i.imgur.com/rKu978Z.png)
     
+## *OPTIONAL Set up a video profile instead of a static profile image
+    1. In OBS add a new "Media Source" source. Keep the default name "Media Source" DO NOT RENAME IT.
+    2. Right click on your new Media Source and click properties. 
+    3. Add your video to the local file.
+    4. Make sure "Loop" is off, "Restart..." is on, and "Show nothing..." is on. Then press "OK"
+
+![Screenshot](https://i.imgur.com/kV7oJJo.png)
+
+    5. Right click on Media Source again and click filters.
+    6. Add a "Crop/Pad" Filter, change the left and right so that the video is square. Mine is 425 LEFT, 425 RIGHT to achieve this but yours might be different.
+    7. Add a "Image Mask/Blend" filter.
+    8. Download this image: https://i.imgur.com/LJhPcpN.png and add it to the filter.
+    9. If you need to change the "Crop/Pad" to get rid of any weirdness around the circle.
+    10. Go back to OBS and scale down your profile video and put it in the bottom left.
+    11. Add a new scene called "Blank", don't add any sources to it.
+    12. Rename the main scene where your video is on to "Loom Recording" make sure its capitalized correctly.
+
 ## Run The Code
     1. Go to the menu and click 'Terminal' then 'New Terminal'
     2. Type 'pip install -r requirements.txt'
-    2. In the terminal type 'python main.py'
+    3. For a loom video with a static image in the terminal type 'python main.py' 
+    4. For a video profile in the bottom left type 'python main-video.py'
 
 ## Make Sure The Video Is Correctly Outputting
     1. Once one video has finished recording stop the code by clicking the terminal and using the hotkey "Control+C" (You may need to spam it)
