@@ -1,21 +1,17 @@
 from selenium import webdriver
 import time
 import logging
-logging.basicConfig(level=logging.DEBUG)
 import asyncio
 import simpleobsws
 from simpleobsws import Request
 import csv
 import os
-import pygame
 import math
 import numpy
 from datetime import datetime
 
 # A tuple of video file extensions to look for
 file_names = []
-pygame.mixer.init()
-sound = pygame.mixer.Sound('data/audio.mp3')
 start = 0  # Start of the range (in radians)
 end = 2 * math.pi  # End of the range (in radians)
 num_points = 1000  # How many points to generate
@@ -62,6 +58,13 @@ async def main(website, file_name):
         await ws.connect()
         await ws.wait_until_identified()
 
+        # Switch to 'Blank' scene
+        await switch_scene(ws, 'Blank')
+        await asyncio.sleep(1)  # Wait for 1 second before switching back
+
+        # Switch back to 'Loom Recording' scene
+        await switch_scene(ws, 'Loom Recording')
+
         request = Request('StartRecord')
         response = await ws.call(request)
 
@@ -70,17 +73,18 @@ async def main(website, file_name):
         else:
             print("Request failed. Response data:", response.responseData)
 
-        sound.play() 
-
         time.sleep(1)
         for x, sin_val in zip(x_values, sin_values):
-            print(sin_val)
             browser.execute_script("window.scrollTo(0, {});".format(sin_val*1000))
 
-        # Keep the program running until the sound plays completely
-        while pygame.mixer.get_busy():
-            pygame.time.Clock().tick(10)
+        # Wait until media ends
+        source_name = 'Media Source'
+        media_state = ''
+        while media_state != 'OBS_MEDIA_STATE_ENDED':
+            media_state = await get_media_input_status(ws, source_name)
+            await asyncio.sleep(.25)  # Check every 1 second
 
+        # Stop recording
         request = Request('StopRecord')
         response = await ws.call(request)
 
@@ -111,6 +115,25 @@ def rename_last_modified_file(folder_path, new_name):
         print(f"Renamed '{last_modified_file}' to '{new_file_path}'")
     else:
         print("No files found in the folder.")
+
+async def switch_scene(connection, scene_name):
+    request_data = {'sceneName': scene_name}
+    request = simpleobsws.Request('SetCurrentProgramScene', request_data)
+    response = await connection.call(request)
+    if response.ok:
+        print(f"Successfully switched to scene: {scene_name}")
+    else:
+        print(f"Failed to switch to scene: {scene_name}, {response.requestStatus}")
+
+async def get_media_input_status(connection, source_name):
+    request_data = {'inputName': source_name}
+    request = simpleobsws.Request('GetMediaInputStatus', request_data)
+    response = await connection.call(request)
+    if response.ok:
+        media_state = response.responseData['mediaState']
+        return media_state
+    else:
+        return None
 
 asyncio.run(read_data())
 
