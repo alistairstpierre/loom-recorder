@@ -34,7 +34,7 @@ Download and install Firefox [here](https://www.mozilla.org/en-US/firefox/)
 ![App Screenshot](https://i.imgur.com/nroyEss.png)
     
     3. Paste in or browse to /Library/Frameworks/
-    4. Your Scripts window should now say "Loaded Python Version 3.11 if it doesn't I'm sorry but your journey ends here.
+    4. Your Scripts window should now say "Loaded Python Version 3.11" if it doesn't you'll have to do some debugging unfortunately, use chatGPT.
     5. Close out of scripts and go back to the menu, click 'Tools' then 'WebSocket Server Settings'
     6. Tick 'Enable Websocket Server' and then click Apply.
     7. Add your circular profile image to OBS in the bottom left corner to look like loom.
