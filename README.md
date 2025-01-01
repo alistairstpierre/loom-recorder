@@ -12,7 +12,7 @@ Record as many 'loom style' videos as you like. You will need:
 
 ## Downloads & Installs
 
-Download and install Python version 3.1.1 [here](https://www.python.org/downloads/release/python-3110/) no other version will work.
+Download and install Python version 3.11 [here](https://www.python.org/downloads/release/python-3110/) no other version will work.
 
 Download and install OBS [here](https://obsproject.com/) this will be used to record the videos.
 
